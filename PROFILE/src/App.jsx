@@ -3,9 +3,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import Story from "./Story";
 export default function App() {
   const playStoryMusic = () => {
-  const audio = new Audio("/music/Story.mp3");
-  audio.play();
-
   sessionStorage.setItem("playStoryMusic", "true");
 };
 

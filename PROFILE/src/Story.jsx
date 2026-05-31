@@ -3,29 +3,27 @@ import { useEffect, useRef } from "react";
 
 export default function Story() {
 
-  const audioRef = useRef(null);
+const audioRef = useRef(null);
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+useEffect(() => {
+  window.scrollTo({ top: 0 });
 
-    const shouldPlay = sessionStorage.getItem("playStoryMusic");
+  const shouldPlay = sessionStorage.getItem("playStoryMusic");
 
-    if (shouldPlay && audioRef.current) {
-      audioRef.current.play().catch(() => {});
+  if (shouldPlay && audioRef.current) {
+    audioRef.current.currentTime = 0;
+    audioRef.current.play().catch(() => {});
+  }
+
+  return () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
     }
 
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-
-      sessionStorage.removeItem("playStoryMusic");
-    };
-  }, []);
+    sessionStorage.removeItem("playStoryMusic");
+  };
+}, []);
 
   return (
     <>
