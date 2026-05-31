@@ -2,6 +2,13 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Story from "./Story";
 export default function App() {
+  const playStoryMusic = () => {
+  const audio = new Audio("/music/Story.mp3");
+  audio.play();
+
+  sessionStorage.setItem("playStoryMusic", "true");
+};
+
   return (
     <Routes>
       <Route
@@ -166,6 +173,7 @@ export default function App() {
 
             <Link
               to="/story"
+              onClick={playStoryMusic}
               className="inline-block px-8 py-4 bg-white text-black hover:bg-stone-300 transition uppercase tracking-widest text-sm"
             >
               Read Story

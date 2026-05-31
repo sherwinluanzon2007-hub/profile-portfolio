@@ -5,31 +5,33 @@ export default function Story() {
 
   const audioRef = useRef(null);
 
-  useEffect(() => {
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+      const shouldPlay = sessionStorage.getItem("playStoryMusic");
 
-    if (audioRef.current) {
-      audioRef.current.play().catch(() => {});
-    }
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
+      if (shouldPlay && audioRef.current) {
+        audioRef.current.play().catch(() => {});
       }
-    };
 
-  }, []);
+      return () => {
+        if (audioRef.current) {
+          audioRef.current.pause();
+          audioRef.current.currentTime = 0;
+        }
+
+        sessionStorage.removeItem("playStoryMusic");
+      };
+    }, []);
 
   return (
     <>
-      <audio ref={audioRef} loop>
-        <source src="/music/story.mp3" type="audio/mpeg" />
-      </audio>
+      <audio ref={audioRef} loop controls>
+  <source src="/music/Story.mp3" type="audio/mpeg" />
+</audio>
 
       <div className="min-h-screen bg-stone-100 text-neutral-900 font-serif">
 
