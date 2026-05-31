@@ -73,7 +73,7 @@
 #next-steps {
   display: flex;
   border-top: 1px solid var(--border);
-  text-align: left;
+  text-align: justify;
 
   & > div {
     flex: 1 1 0;
@@ -91,7 +91,7 @@
 
   @media (max-width: 1024px) {
     flex-direction: column;
-    text-align: center;
+    text-align: justify;
   }
 }
 
@@ -147,7 +147,7 @@
 
     a {
       width: 100%;
-      justify-content: center;
+      justify-content: justify;
       box-sizing: border-box;
     }
   }
