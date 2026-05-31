@@ -29,7 +29,7 @@ export default function Story() {
 
   return (
     <>
-      <audio ref={audioRef} loop controls>
+      <audio ref={audioRef} loop>
   <source src="/music/Story.mp3" type="audio/mpeg" />
 </audio>
 
